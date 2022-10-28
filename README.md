@@ -1,4 +1,20 @@
-# vue-composition-api
+# Todo App with Vue3 Composition API
+
+# [DEMO] 
+
+
+## Topics
+
+- Vue3
+- Composition API
+- Bulma.io
+
+## Author
+
+ahmetloca
+
+## Screenshots
+
 
 ## Project setup
 ```
@@ -9,16 +25,3 @@ npm install
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
