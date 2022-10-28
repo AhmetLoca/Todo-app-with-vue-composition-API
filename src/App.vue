@@ -2,7 +2,7 @@
   <img class="image" alt="Vue logo" src="./assets/todo1.png" />
   <div class="container">
     <h3 class="title">Todo App</h3>
-    <form @submit.prevent="addTodo()">
+    <form @submit.prevent>
       <!-- input start -->
       <div class="field">
         <div class="control">
@@ -15,14 +15,30 @@
         </div>
       </div>
       <!-- input finish -->
-      <button class="button is-success is-medium is-fullwidth">Add</button>
+      <button
+        @click="addTodo()"
+        class="button is-success is-medium is-fullwidth"
+      >
+        Add
+      </button>
       <!-- Cards start -->
       <div v-for="todo in todos" :key="todo.id" class="card my-5">
         <div class="card-content">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4">{{ todo.content }}</p>
-              <p class="subtitle is-6">{{ todo.done }}</p>
+              <p class="title is-4" :class="{ done: todo.done }">
+                {{ todo.content }}
+              </p>
+              <button
+                @click="
+                  {
+                    doneTodo(todo);
+                  }
+                "
+                class="button is-danger subtitle is-6"
+              >
+                {{ todo.done }}
+              </button>
             </div>
           </div>
         </div>
@@ -46,12 +62,19 @@ export default {
         done: false,
         id: Date.now(),
       });
+      //butona bastiktan sonra input alani boşalsin.
+      todo.value = "";
+    };
+
+    const doneTodo = (todo) => {
+      todo.done = !todo.done;
     };
 
     return {
       todo,
       todos,
       addTodo,
+      doneTodo,
     };
   },
 };
@@ -74,5 +97,9 @@ export default {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.done {
+  text-decoration: line-through;
 }
 </style>
